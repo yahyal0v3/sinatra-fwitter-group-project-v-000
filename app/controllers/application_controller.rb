@@ -110,7 +110,7 @@ class ApplicationController < Sinatra::Base
     else
        tweet.update(content: params[:content])
        redirect :"/tweets/#{tweet.id}"
-    end 
+    end
   end
 
   delete '/tweets/:id/delete' do
