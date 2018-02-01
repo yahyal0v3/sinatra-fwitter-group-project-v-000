@@ -103,13 +103,13 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  patch '/tweets/:id' do
-    tweet = Tweet.find(params[:id])
+  patch '/tweets/:slug' do
+    tweet = Tweet.find(params[:slug])
     if params[:content] == ""
-       redirect "/tweets/#{params[:id]}/edit"
+       redirect "/tweets/#{params[:slug]}/edit"
     else
        tweet.update(content: params[:content])
-       redirect :"/tweets/#{tweet.id}"
+       redirect :"/tweets/#{tweet.slug}"
     end
   end
 
