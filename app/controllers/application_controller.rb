@@ -98,6 +98,8 @@ class ApplicationController < Sinatra::Base
     @tweet = Tweet.find(params[:id])
     if logged_in? && current_user.tweets.include?(@tweet)
       erb :'/tweets/edit_tweet'
+    else 
+      
     end
   end
 
