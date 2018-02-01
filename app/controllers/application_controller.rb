@@ -114,9 +114,11 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/tweets/:id/delete' do
-    tweet = Tweet.find(params[:id])
-    tweet.delete
-    redirect to "/users/#{current_user.id}"
+    if logged_in?
+      tweet = Tweet.find(params[:id])
+      tweet.delete
+      redirect to "/users/#{current_user.id}"
+    end 
   end
 
   helpers do
