@@ -95,6 +95,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/tweets/:id/edit' do
+    binding.pry
     @tweet = Tweet.find(params[:id])
     erb :'/tweets/edit_tweet'
   end
