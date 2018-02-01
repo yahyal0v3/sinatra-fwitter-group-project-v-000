@@ -100,6 +100,7 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/tweets/:id' do
+    binding.pry
     tweet = Tweet.find(params[:id])
     redirect :"/tweets/#{@tweet.id}"
   end
