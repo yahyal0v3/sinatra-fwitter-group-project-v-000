@@ -105,8 +105,12 @@ class ApplicationController < Sinatra::Base
 
   patch '/tweets/:id' do
     tweet = Tweet.find(params[:id])
-    tweet.content = params[:content]
-    redirect :"/tweets/#{tweet.id}"
+    if params[:content] == ""
+       redirect "/tweets/#{params[:slug]}/edit"
+    else
+       tweet.update(content: params[:content])
+       redirect :"/tweets/#{tweet.id}"
+    end 
   end
 
   delete '/tweets/:id/delete' do
